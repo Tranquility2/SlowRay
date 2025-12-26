@@ -1,1 +1,2 @@
 pillow==12.0.0
+alive-progress==3.3.0
