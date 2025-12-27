@@ -12,6 +12,9 @@ class vec3:
 
     def __mul__(self, scalar):
         return vec3(self.x * scalar, self.y * scalar, self.z * scalar)
+    
+    def __rmul__(self, scalar):
+        return self * scalar
 
     def __truediv__(self, scalar):
         return vec3(self.x / scalar, self.y / scalar, self.z / scalar)
@@ -47,4 +50,4 @@ class vec3:
     def to_tuple(self):
         return (self.x, self.y, self.z)
 
-point = vec3  # Alias for clarity
+point3 = vec3  # Alias for clarity
