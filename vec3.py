@@ -46,3 +46,5 @@ class vec3:
     
     def to_tuple(self):
         return (self.x, self.y, self.z)
+
+point = vec3  # Alias for clarity
