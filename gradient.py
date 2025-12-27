@@ -28,16 +28,15 @@ def generate_gradient_image(image: Image, filename: str):
     # calculate upper left corner of the viewport
     viewport_upper_left = (camera_center - vec3(0,0,focal_length) - viewport_u / 2 - viewport_v / 2)
     pixel00_loc = viewport_upper_left + 0.5 * (pixel_delta_u + pixel_delta_v)
+
     with alive_bar(image.width * image.height, title="Generating Gradient Image") as bar:
         for x in range(image.width):
             for y in range(image.height):
                 pixel_center = pixel00_loc + (x * pixel_delta_u) + (y * pixel_delta_v)
                 ray_direction = pixel_center - camera_center
-                r: ray = ray(camera_center, ray_direction)
-                
+                r = ray(camera_center, ray_direction)
                 pixel_color: color = ray_color(r)
                 write_color(image, x, y, pixel_color)
-                
                 bar()
 
     image.save(filename)
