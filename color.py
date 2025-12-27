@@ -1,8 +1,10 @@
+from PIL import Image
 from vec3 import vec3
 
 color = vec3  # Alias for clarity
 
-def write_color(pixel_color: color):
+# Write the color to the image at the specified pixel location
+def write_color(image: Image.Image, x: int, y: int, pixel_color: color):
     r = pixel_color.x
     g = pixel_color.y
     b = pixel_color.z
@@ -11,4 +13,4 @@ def write_color(pixel_color: color):
     gbyte = int(255.999 * g)
     bbyte = int(255.999 * b)
 
-    return (rbyte, gbyte, bbyte)
+    image.putpixel((x, y), (rbyte, gbyte, bbyte))
